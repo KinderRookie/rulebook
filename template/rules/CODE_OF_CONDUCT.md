@@ -80,6 +80,7 @@ Write or update a doc after:
 - Any non-obvious workaround or dead-end.
 - The user issues a standing rule ("always do X", "never do Y").
 - Learning something about an external system that isn't in its docs.
+- Code review surfaces an undocumented convention, constraint, or rationale.
 
 **Do not** write a doc for things obvious from the code itself, or for one-off facts that won't matter next session. Prefer updating an existing doc over creating a new one. Keep entries terse — bullet points and short examples beat prose.
 
