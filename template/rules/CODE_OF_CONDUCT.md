@@ -4,6 +4,23 @@ Before proposing changes, understand the relevant code. Skim the project structu
 
 ---
 
+# Asking vs Deciding
+
+**Ask the user** when:
+- The intent is genuinely ambiguous (multiple plausible interpretations exist).
+- The decision affects architecture, data shape, public APIs, or user-facing behavior.
+- A reasonable choice depends on context you don't have (existing infra, business priorities, future plans).
+
+**Decide on your own** — and surface the decision in your final report — when:
+- The choice is local, reversible, and low-stakes (variable names, internal helper structure, formatting).
+- The choice clearly follows an existing project convention.
+
+When you do ask, prefer presenting 2–4 concrete options over open-ended questions. Open questions are appropriate only when the design space is genuinely large and brainstorming is the goal.
+
+If you hit a blocker, an unexpected runtime issue, or a fork in the road that wasn't covered upfront mid-implementation, **stop and ask** rather than picking a direction silently.
+
+---
+
 # Skills
 
 Once the language and framework are settled, look for relevant Skills and follow their best practices for effective, maintainable, readable code. If no matching Skill exists, briefly note this before proceeding so the user can supply one if needed.

@@ -1,5 +1,7 @@
 # rulebook
 
+명확하고 유지보수 가능한 agent-paired 코딩을 위한 프로젝트 템플릿 입니다. 
+
 A meta-template for coding agents (Claude Code, Cursor, Codex, etc.). Drop the skeleton into a fresh project and your agent inherits a consistent set of working rules, code conventions, and a knowledge-persistence convention — without you re-pasting them every time.
 
 ## Install
