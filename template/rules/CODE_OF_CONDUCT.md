@@ -37,6 +37,16 @@ Critically review every instruction before implementing. If you see a meaningful
 
 ---
 
+# Explain for the user's next decision
+
+When you stop mid-implementation to ask a question, present alternatives in language the user can act on. Avoid terse, agent-internal shorthand or unexplained technical terms. For each option, explain what it means, why it matters, and what the user would be choosing.
+
+When reporting after coding, write enough context for the user to know what changed, how to verify it, and what decision or action is needed next. Do not compress important caveats into vague phrases like "handled edge cases" or "cleaned up flow" without explaining the concrete behavior.
+
+Use project-specific terms when they are necessary, but define them the first time if the user may not share the same context. The goal of every report or question is that the user can confidently decide the next step without guessing what the agent meant.
+
+---
+
 # Destructive Operations
 
 For **destructive operations** — DB migrations, deletions, force-push, schema changes, DML through MCP — get explicit confirmation *before* executing, never after.
