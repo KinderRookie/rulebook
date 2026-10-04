@@ -9,7 +9,7 @@ A meta-template for coding agents (Claude Code, Cursor, Codex, etc.). Drop the s
 In your project root:
 
 ```bash
-npx degit --force snagreakim/rulebook/template .
+npx degit --force KinderRookie/rulebook/template .
 git init   # if you haven't already
 ```
 
@@ -18,14 +18,14 @@ git init   # if you haven't already
 No node? Use curl:
 
 ```bash
-curl -L https://github.com/snagreakim/rulebook/archive/main.tar.gz \
+curl -L https://github.com/KinderRookie/rulebook/archive/main.tar.gz \
   | tar -xz --strip-components=2 rulebook-main/template
 ```
 
 ### Recommended order
 
 1. `mkdir myproject && cd myproject`
-2. `npx degit --force snagreakim/rulebook/template .`
+2. `npx degit --force KinderRookie/rulebook/template .`
 3. `git init`
 4. Open the project in your agent — it follows `rules/INIT.md` to scaffold the actual app (e.g. `pnpm create next-app .`), fill in `AGENTS.md`, and ask which skills to install.
 
@@ -59,7 +59,7 @@ agent_docs/
 To pull a newer version of the rulebook:
 
 ```bash
-npx degit --force snagreakim/rulebook/template .
+npx degit --force KinderRookie/rulebook/template .
 ```
 
 ⚠️ This **overwrites** skeleton files — including your customized `AGENTS.md`, `CLAUDE.md`, `GLOSSARY.md`, and `agent_docs/INDEX.md`. Commit local changes first, then resolve the diff. Project-specific docs you've added to `agent_docs/` (e.g. `DB_SCHEMA_RULES.md`) are safe — degit only writes paths that exist in the template.
