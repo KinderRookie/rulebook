@@ -1,30 +1,19 @@
-# 1. Project Context
-## About
-This project is [PLACEHOLDER]. 
+@AGENTS.md
 
-## Stack
-This info will help you find useful SKILLs
-Language: [LANGUAGE]
-Infra: [INFRA]
-Code Repository: Github
+# Rules
+`AGENTS.md` lists these files. The imports below load them for Claude Code.
 
-## Commands
-- Running the project(dev): [COMMAND]
-- DB Migration: [MIGRATION_COMMAND]
-
-# 2. Project Structure
-- `./path/foo/bar`: [DESCRIPTION]
-- `./scripts`: frequently reused project-related scripts.
-
-# 3. First-Time Init
-If `./rules/INIT.md` still exists, follow it before anything else. Once init is done, delete the file and remove the `@import` line below.
+## First-Time Init
 @./rules/INIT.md
 
-# 4. When Working With User
+## When Working With User
 @./rules/CODE_OF_CONDUCT.md
 
-# 5. When Writing Code
+## When Writing Responses and Docs
+@./rules/OUTPUT_STYLE.md
+
+## When Writing Code
 @./rules/CODING_CONVENTION.md
 
-# 6. Project Knowledge Store
+## Project Knowledge Store
 @./agent_docs/INDEX.md

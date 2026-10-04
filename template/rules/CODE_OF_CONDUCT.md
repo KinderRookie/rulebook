@@ -60,7 +60,7 @@ For UI or runtime changes, tell the user how to verify (commands to run, URLs to
 After finishing, report concisely:
 
 1. **Changed** — files touched, high-level diff summary.
-2. **Decided unilaterally** — every decision you made without asking, including nits. The user can't course-correct what they don't see.
+2. **Decided unilaterally** — decisions you made without asking that change behavior, data, public APIs, dependencies, or anything the user would notice. Skip nits such as names and formatting. The user can't course-correct what they don't see.
 3. **Open items** — anything skipped, deferred, or needing user follow-up: env vars to set, services to provision, manual data migration, secrets to rotate.
 4. **Surprises** — workarounds, dead-ends, non-obvious behaviors found while debugging. These are the things that matter most for next session.
 
@@ -68,11 +68,32 @@ After finishing, report concisely:
 
 # Knowledge persistence
 
-Across sessions, the following gets forgotten unless written down: temporary scaffolding, standing user instructions, dependencies on external setup the user must perform manually, irregular or inconsistent data, workarounds, "do this / don't do this" rules, decisions that drifted from the original spec, infra integration gotchas, security configurations, and lessons from debugging.
+Across sessions, the following gets forgotten unless written down: temporary scaffolding, standing user instructions, dependencies on external setup the user must perform manually, irregular or inconsistent data, workarounds, "do this / don't do this" rules, decisions and the reasons behind them, project terms, infra integration gotchas, security configurations, and lessons from debugging.
 
-Persist this knowledge in `./agent_docs/` so future sessions (this agent or others) can pick up where you left off.
+Persist this knowledge so future sessions (this agent or others) can pick up where you left off. Pick the destination by what the knowledge is:
 
-## Structure
+| Knowledge | Destination | Lifecycle |
+|---|---|---|
+| A decision that is hard to reverse, surprising without context, and the result of a real trade-off (all three) | `docs/adr/` | Do not edit after acceptance. Write a new ADR that supersedes it. |
+| A project term: the project's own word for a thing | `GLOSSARY.md` | Update when the meaning is settled. |
+| Everything else: rules, gotchas, workarounds, runbooks, infra quirks | `agent_docs/` | Edit freely. Delete when stale. |
+
+## ADRs
+
+Write an ADR in any session, not only in a grilling session, when a decision passes all three gates above. If any gate fails, do not write one. Offer the ADR to the user before you write it.
+
+- File: `docs/adr/NNNN-slug.md`. Scan for the highest number and add one. `docs/adr/README.md` has the full format.
+- Body: a title and 1–3 sentences on the context, the decision, and why. Add `Status`, `Considered Options`, or `Consequences` only when they add real value.
+- Qualifies: architectural shape, integration patterns, technology with lock-in, boundary and scope decisions, deliberate deviations from the obvious path, constraints not visible in the code, and non-obvious rejected alternatives.
+
+## Glossary
+
+- `GLOSSARY.md` holds terms only. No implementation details, specs, or notes.
+- One or two sentences per term. Define what it is, not what it does. List rejected synonyms under `_Avoid_`.
+- Add only terms specific to this project, not general programming concepts.
+- When the user uses a term in a way that conflicts with the glossary, point it out immediately.
+
+## agent_docs structure
 
 - `agent_docs/INDEX.md` — table of contents listing every doc and its purpose. Update whenever you add or remove a doc.
 - Topic-specific docs alongside it. Naming convention: `UPPER_SNAKE_CASE.md`. Examples:
@@ -81,12 +102,12 @@ Persist this knowledge in `./agent_docs/` so future sessions (this agent or othe
   - `INFRA_INTEGRATION.md` — external API quirks, auth flows, rate limits, region-specific behavior.
   - `RUNBOOK.md` — recurring operational procedures (deploy steps, common debugging recipes).
 
-If `CLAUDE.md` already covers an area, **update the existing entry there** rather than creating a parallel doc. Do not add new top-level entries to `CLAUDE.md` — extend `agent_docs/` instead.
+If `AGENTS.md` already covers an area, **update the existing entry there** rather than creating a parallel doc. Do not add new top-level entries to `AGENTS.md` or `CLAUDE.md` — extend `agent_docs/` instead.
 
 ## When to write
 
-Write or update a doc after:
-- Any decision future-you would need to rediscover.
+Write or update an `agent_docs/` doc after:
+- Any decision future-you would need to rediscover that does not qualify for an ADR.
 - Any non-obvious workaround or dead-end.
 - The user issues a standing rule ("always do X", "never do Y").
 - Learning something about an external system that isn't in its docs.
