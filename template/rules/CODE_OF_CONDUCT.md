@@ -77,21 +77,16 @@ Persist this knowledge so future sessions (this agent or others) can pick up whe
 | A decision that is hard to reverse, surprising without context, and the result of a real trade-off (all three) | `docs/adr/` | Do not edit after acceptance. Write a new ADR that supersedes it. |
 | A project term: the project's own word for a thing | `GLOSSARY.md` | Update when the meaning is settled. |
 | Everything else: rules, gotchas, workarounds, runbooks, infra quirks | `agent_docs/` | Edit freely. Delete when stale. |
+| Open work: unresolved questions, deferred discussions, tasks, and what blocks what | `backlog/` via the `backlog` CLI, if Backlog.md is installed | Close the task when done. A decision that comes out of it goes to `docs/adr/` if it passes the gates. |
 
-## ADRs
+Write decisions only in `docs/adr/`. Do not use Backlog.md's `decisions/` folder, so each decision lives in one place.
 
-Write an ADR in any session, not only in a grilling session, when a decision passes all three gates above. If any gate fails, do not write one. Offer the ADR to the user before you write it.
+When several open questions or follow-ups appear at once, do not keep them only in the conversation. If Backlog.md is installed, create a task for each one and link the dependencies. Then work on the unblocked one first.
 
-- File: `docs/adr/NNNN-slug.md`. Scan for the highest number and add one. `docs/adr/README.md` has the full format.
-- Body: a title and 1–3 sentences on the context, the decision, and why. Add `Status`, `Considered Options`, or `Consequences` only when they add real value.
-- Qualifies: architectural shape, integration patterns, technology with lock-in, boundary and scope decisions, deliberate deviations from the obvious path, constraints not visible in the code, and non-obvious rejected alternatives.
+## ADRs and glossary
 
-## Glossary
-
-- `GLOSSARY.md` holds terms only. No implementation details, specs, or notes.
-- One or two sentences per term. Define what it is, not what it does. List rejected synonyms under `_Avoid_`.
-- Add only terms specific to this project, not general programming concepts.
-- When the user uses a term in a way that conflicts with the glossary, point it out immediately.
+- Write an ADR in any session, not only in a grilling session, when a decision passes all three gates in the table. Offer it to the user before you write it. Format and examples: `docs/adr/README.md`.
+- Add a term to `GLOSSARY.md` when its meaning is settled. Format: the comment in `GLOSSARY.md`. When the user uses a term in a way that conflicts with the glossary, point it out immediately.
 
 ## agent_docs structure
 

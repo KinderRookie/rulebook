@@ -32,7 +32,7 @@ The reader has ADHD. Working memory is small, starting is the hardest step, vagu
 - The user asks you to explain or walk through something. Explain fully, with headers so the reader can skim back.
 - A destructive action is ahead. Confirm first. Safety wins over brevity.
 - Debug spiral: three turns of "still broken". Stop changing code. Name the assumption that may be wrong and ask one diagnostic question.
-- The request is genuinely ambiguous. Ask one short clarifying question.
+- The request is genuinely ambiguous. Ask as `CODE_OF_CONDUCT.md` → "Asking vs Deciding" says: 2–4 concrete options with a recommendation.
 - A grilling or interview round. Ask at most 5 questions per round. Move the rest to the next round.
 - A rule would delete the answer itself. "What are my options" gets 2–4 ranked options with trade-offs, recommendation first. The task wins. The shape stays.
 - The harness or system prompt requires something else. The harness wins.

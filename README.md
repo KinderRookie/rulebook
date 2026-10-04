@@ -27,7 +27,9 @@ curl -L https://github.com/KinderRookie/rulebook/archive/main.tar.gz \
 1. `mkdir myproject && cd myproject`
 2. `npx degit --force KinderRookie/rulebook/template .`
 3. `git init`
-4. Open the project in your agent — it follows `rules/INIT.md` to scaffold the actual app (e.g. `pnpm create next-app .`), fill in `AGENTS.md`, and ask which skills to install.
+4. Open the project in your agent — it follows `rules/INIT.md` to scaffold the actual app (e.g. Next.js), fill in `AGENTS.md`, and ask which skills to install.
+
+If you ask an agent to apply the template mid-session ("apply this template"), start a new session afterwards or tell the agent to read `AGENTS.md`. Claude Code loads `CLAUDE.md` only when a session starts, so the rules and `rules/INIT.md` are not active until then.
 
 ## What you get
 
@@ -50,9 +52,9 @@ agent_docs/
 ## How it works
 
 1. After install, open the project in your agent. Claude Code reads `CLAUDE.md`, which imports `AGENTS.md` and the rules via `@./rules/...`. Other agents read `AGENTS.md`, which tells them to read the same rule files.
-2. On first run, the agent follows `rules/INIT.md` — asks you about stack and goals, fills in the `[PLACEHOLDER]` fields in `AGENTS.md`, and offers optional skills (STE rewriter, grilling interviews, draw.io). Picked skills are fetched with `npx skills add`, so you always get the latest version.
+2. On first run, the agent follows `rules/INIT.md` — asks you about stack and goals, fills in the `[PLACEHOLDER]` fields in `AGENTS.md`, and offers optional skills (STE rewriter, grilling interviews, draw.io) and tools (Backlog.md, a local Markdown issue tracker with dependencies). Picked skills are fetched with `npx skills add`, so you always get the latest version.
 3. Once init is complete, **delete `rules/INIT.md` and remove its references from `AGENTS.md` and `CLAUDE.md`** so it stops being reused.
-4. As work progresses, the agent persists knowledge by type: hard-to-reverse decisions → `docs/adr/`, project terms → `GLOSSARY.md`, everything else (gotchas, infra quirks, standing rules) → `agent_docs/`.
+4. As work progresses, the agent persists knowledge by type: hard-to-reverse decisions → `docs/adr/`, project terms → `GLOSSARY.md`, open questions and blocked work → `backlog/` (if Backlog.md is installed), everything else (gotchas, infra quirks, standing rules) → `agent_docs/`.
 
 ## Updating
 

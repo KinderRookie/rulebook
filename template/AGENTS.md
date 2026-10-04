@@ -19,6 +19,7 @@ Code Repository: Github
 - `./agent_docs`: project knowledge for agents. See `agent_docs/INDEX.md`.
 - `./GLOSSARY.md`: project terms. Add a term when its meaning is settled.
 - `./docs/adr`: architecture decision records. See `docs/adr/README.md`.
+- `./backlog`: open tasks and their dependencies, if Backlog.md is installed. Use the `backlog` CLI, not hand edits.
 
 # 3. Rules
 Read these files before you start work. They are part of this file. `CLAUDE.md` imports the same files for Claude Code.

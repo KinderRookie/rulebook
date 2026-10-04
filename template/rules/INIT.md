@@ -9,10 +9,18 @@ This file applies **only when the project is first being set up**. Once init is 
 
 ## Examples
 
+Scaffolders that refuse a non-empty folder (such as `create-next-app`) fail here, because the template files are already in the folder. Scaffold into a subfolder, then merge it up.
+
 next-js app:
 ```bash
-pnpm create next-app@latest . --yes
+pnpm create next-app@latest app-tmp --yes --disable-git --skip-install
+cat app-tmp/AGENTS.md >> AGENTS.md          # keep the template's AGENTS.md, append Next.js's agent block
+rm app-tmp/AGENTS.md app-tmp/CLAUDE.md      # the template's CLAUDE.md already imports AGENTS.md
+cp -R app-tmp/. . && rm -r app-tmp
+pnpm install
 ```
+- `--disable-git` stops a nested `.git/` from overwriting the project's repository.
+- Before `cp`, check `app-tmp/` for other files that would overwrite template files. Ask the user if any collide.
 
 python app:
 ```bash
@@ -45,9 +53,27 @@ npx skills add Agents365-ai/drawio-skill -a claude-code codex -y
 - Ask whether to commit `.agents/`, `.claude/skills/`, and `skills-lock.json`. Committing them pins the versions for teammates. `npx skills update` pulls newer versions later.
 - If the user declines `asd-ste100`, skip the linter step in `OUTPUT_STYLE.md`.
 
+## Tools
+
+CLI tools that are not skills. Ask the user whether to install each one.
+
+| Tool | What it does | Source |
+|---|---|---|
+| Backlog.md | Local issue tracker. Each task is a Markdown file in `backlog/`, with status and dependencies on other tasks. Use it for open questions, deferred discussions, and work that waits on other work. | https://github.com/MrLesk/Backlog.md |
+
+Install and initialize Backlog.md:
+
+```bash
+npm i -g backlog.md        # or: brew install backlog-md
+backlog init "<project name>" --defaults --agent-instructions agents --integration-mode cli
+```
+
+- `--agent-instructions agents` appends a guideline block to `AGENTS.md` and keeps the existing content. Do not also pick `claude`. `CLAUDE.md` already imports `AGENTS.md`, so a second block would duplicate it.
+- If the project has no git remote yet, run `backlog config set remoteOperations false` to silence the remote warning.
+
 ## Checklist
 - [ ] Initial project scaffold + minimum spec/plan/goal is fully equipped
 - [ ] Skeleton `AGENTS.md` updated
 - [ ] `[PROJECT NAME]` and the description in `GLOSSARY.md` filled in
-- [ ] Skills chosen by the user installed
+- [ ] Skills and tools chosen by the user installed
 - [ ] Delete `./rules/INIT.md`, remove its reference from `AGENTS.md`, and remove its `@import` from `CLAUDE.md`

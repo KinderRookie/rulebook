@@ -11,6 +11,8 @@ Write an ADR only when all three are true:
 
 If one is false, do not write an ADR. Put the knowledge in `agent_docs/` or leave it in the conversation.
 
+Decisions that usually qualify: architectural shape, integration patterns, technology with lock-in, boundary and scope decisions, deliberate deviations from the obvious path, constraints not visible in the code, and non-obvious rejected alternatives.
+
 ## File name
 
 `NNNN-slug.md`. Find the highest number in this directory and add one. Example: `0001-postgres-for-write-model.md`.

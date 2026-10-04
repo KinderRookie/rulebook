@@ -1,5 +1,5 @@
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-Each example case is located at ./rules/CODING_CONVENTION_EXAMPLES.md. On
+Each example case is located at ./rules/CODING_CONVENTION_EXAMPLES.md.
 
 ## 1. Think Before Coding
 
